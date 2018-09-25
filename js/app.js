@@ -45,15 +45,18 @@ console.log('tamagotchi')
 
 //Create a class for my tamagotchi with hunger, sleepiness, boredom, and age as its keys
 
-// Create an input box to store the name of the tamagotchi instince
+// Create an input box to store the name of the tamagotchi instince with event listener, key press or button click
+
+//tamagotchi will start at age 1
 
 //Increase the age of my tamagotchi every x minutes. Once pet hits certain age, make him morph to next level pet....css?
 
 //animate pet somehow with JQuery perhaps. If i make my character look like Kirby i can expand the circle of his body back and forth.
 
-//--------------------
+//--------------------About buttons
 
 //Also increase the hunger, boredom, sleepiness every x minutes
+//setInterval
 
 //Display these on the page so user can see^^^^^^^Alert
 
@@ -72,28 +75,108 @@ console.log('tamagotchi')
 //Probably create a function for time passing, and have all of the properties increase my x minutes.
 
 //If user does not complete any button clicks within a certain amount of time display a message saying tamagotchi has died.
+// setInterval
 
 //Display message of cause of death.
 
 //reset game after user clicks a restart button
 
+//---------------------------User stories
+
+/*
+User should be able to start game
+
+user should be able to name pet
+
+user should be able to feed, play, and turn off lights for pet
+
+user should be able to see the levels of the pets hunger, boredom, and sleepiness.
+
+user should be alerted if levels are low
+
+user should be alerted if pet age is increased by x amount
+
+user should be able to restart game 
+
+*/
+
+
+class Pet  {
+	constructor(name, hunger, sleepiness, boredom, age){
+		this.hunger = hunger; 
+		this.sleepiness = sleepiness;
+		this.boredom = boredom;
+		this.age = age;
+	}
+	isDead(){
+
+	}
+}
+const pet = new Pet('userInput', '1-10','1-10','1-10', 0)
+
+
+
+//game object & FUNCTIONS
+const game = {
+	timer: 0,
+	feedPet(){
+
+	},
+	playWithPet(){
+
+	},
+	controlLights(){
+
+	},
+	printStats(){
+
+	},
+	startTimer(){
+		const interval = setInterval(() => {
+			this.timer++;
+			if(this.timer === 100){
+				clearInterval(interval);
+			}
+				$('#timer').text('Timer ' + this.timer + 's');
+		}, 1000)
+
+	},
+
+
+	message() {
+
+	}
 
 
 
 
 
 
+}
+//----------some variables
 
 
 
 
 
+//-------------EVENTS INPUT
 
-
-
-
-
-
+//event listener for removing input field
+$("#name-pet").on("click", () => {
+    if ($('#name-pet').val() == "Enter name")
+        $('#name-pet').val("")
+    // remove input
+    // display name there instead
+    // ??? timer start?
+});
+//when user presses enter alert
+$("#name-pet").on("keydown", (e) => {
+    if(e.keyCode == 13) {
+        alert($('#name-pet').val() + '?');
+        game.startTimer();
+        
+    }
+});
 
 
 

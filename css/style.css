@@ -1,0 +1,17 @@
+input {
+	text-align: center;
+	font-size: 20pt;
+	border: 2px solid yellow;
+}
+.feed, .play, .lights {
+	font-size: 20pt;
+	display: inline;
+	padding: 8px;
+}
+div {
+	padding: 30px;
+	display: inline;
+}
+body {
+	background-color: lavender;
+}
