@@ -1,17 +1,27 @@
 input {
 	text-align: center;
 	font-size: 20pt;
-	border: 2px solid yellow;
+	border: 2px solid salmon;
+	/*margin: 20px;*/
 }
 .feed, .play, .lights {
-	font-size: 20pt;
-	display: inline;
-	padding: 8px;
+	font-size: 15pt;
+	display: block;
+	padding: 10px;
+	margin: 10px;
+	font-family: 'Indie Flower', cursive;
+	background-color: salmon;
+	border: 1px solid black;
+
 }
 div {
-	padding: 30px;
+	padding: 40px;
 	display: inline;
+	margin: 10px;
 }
 body {
 	background-color: lavender;
+}
+span {
+	font size: 10pt;
 }

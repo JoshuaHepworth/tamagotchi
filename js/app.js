@@ -137,8 +137,8 @@ const game = {
 			if(this.timer === 100){
 				clearInterval(interval);
 			}
-				$('#timer').text('Timer ' + this.timer + 's');
-		}, 1000)
+				$('#timer').text('Timer ' + this.timer + ' days');
+		}, 10000)
 
 	},
 
@@ -165,6 +165,9 @@ const game = {
 $("#name-pet").on("click", () => {
     if ($('#name-pet').val() == "Enter name")
         $('#name-pet').val("")
+    	let $displayName = $('#display-name')
+    	// $displayName.append($('#name-pet'));
+    	// $('#name-pet').append($displayName)
     // remove input
     // display name there instead
     // ??? timer start?
@@ -172,7 +175,7 @@ $("#name-pet").on("click", () => {
 //when user presses enter alert
 $("#name-pet").on("keydown", (e) => {
     if(e.keyCode == 13) {
-        alert($('#name-pet').val() + '?');
+        alert($('#name-pet').val() + '? Press enter again to start');
         game.startTimer();
         
     }
