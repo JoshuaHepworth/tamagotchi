@@ -135,6 +135,7 @@ class Pet  {
 			this.hunger = 0;
 		}
 		game.printStats();
+		$('.sprite').velocity('callout.bounce', 2000)
 	}
 	play(){
 		this.boredom -= 5;
@@ -143,6 +144,7 @@ class Pet  {
 			this.boredom = 0;
 		}
 		game.printStats();
+		$('.sprite').velocity('callout.shake', 2000)
 	}
 	sleep(){
 		this.sleepiness -= 5;
@@ -152,12 +154,11 @@ class Pet  {
 			// make it zero
 			this.sleepiness = 0;
 		}
-		this.printStats();
+		game.printStats();
+		$('.sprite').velocity('callout.swing', 2000)
 	}
 }
 
-// something similar to this will be moved into game.start()
-// const pet = new Pet(name)
 
 
 
@@ -197,9 +198,9 @@ const game = {
 	},
 	printStats() {
 		$('#timer').text('Age ' + this.pet.age);
-		$('#play-timer').text('Boredom level: ' + this.boredom);
-		$('#lights-timer').text('Sleepiness level: ' + this.sleepiness);
-		$('#feed-timer').text('Hunger level: ' + this.hunger)
+		$('#play-timer').text('Boredom level: ' + this.pet.boredom);
+		$('#lights-timer').text('Sleepiness level: ' + this.pet.sleepiness);
+		$('#feed-timer').text('Hunger level: ' + this.pet.hunger)
 		$('#clock').text('Runtime: ' + this.runTime + 's')
 
 	},
@@ -216,14 +217,15 @@ const game = {
 			if(this.timer % 3 === 0) {
 				this.pet.sleepiness++;
 			}
-			if(this.timer % 1 === 0) {
-				this.hunger++;
-				this.boredom++;
+			// if timer is evenly divisible by 1, 
+			if(this.timer % 4 === 0) {
+				this.pet.hunger++;
+				this.pet.boredom++;
 			}
 			// pet.hunger++;
 			
 			// pet.boredom++;
-			if(this.timer === 21){
+			if(this.timer === 210){
 				clearInterval(this.interval);
 				$('.sprite').velocity('callout.swing', 5000)
 				$('.sprite').velocity('callout.bounce', 5000)
@@ -241,14 +243,14 @@ const game = {
 
 			}
 
-		}, 1000)
+		}, 100)
 
 	},
 
 
 
 			//game over
-		}
+}
 
 //-------------EVENTS INPUT
 
@@ -258,20 +260,20 @@ const game = {
 //button to reduce hunger count
 $('.feed').on('click', () => {
 	console.log('feed button')
-	pet.eat();
-	$('.sprite').velocity('callout.bounce', 2000)
+	game.pet.eat();
+	// $('.sprite').velocity('callout.bounce', 2000)
 	
 })
 $('.play').on('click', () => {
 	console.log('play button')
-	pet.play();
-	$('.sprite').velocity('callout.shake', 2000)
+	game.pet.play();
+	// $('.sprite').velocity('callout.shake', 2000)
 	//on click, subtract timer by one
 })
 $('.lights').on('click', () => {
 	console.log('lights button')
-	pet.sleep();
-	$('.sprite').velocity('callout.swing', 2000)
+	game.pet.sleep();
+	// $('.sprite').velocity('callout.swing', 2000)
 	//on click, subtract timer by one
 })
 //----------------------------------
@@ -292,12 +294,7 @@ $('.lights').on('click', () => {
 //when user presses enter alert and remove input field
 $("#name-pet").on("keydown", (e) => {
     if(e.keyCode == 13) {
-
-    	// this is the functionality you should move into game.start()
-      	//.appendTo($('#display-name'))
-        
         game.start()
-
     }
 });
 
