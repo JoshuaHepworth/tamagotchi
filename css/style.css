@@ -15,9 +15,17 @@ input {
 	font-weight: bold;
 
 }
-body {
+/*div {
+	padding: 40px;
+	display: inline;
+	margin: 10px;
+}*/
+html {
 	background-color: lavender;
-	background-image: url('https://images8.alphacoders.com/442/thumb-1920-442432.jpg');
+	background-image: url('https://yese69.com/wp-content/uploads/data/2017/12/10/8-bit-wallpaper-1920x1080-for-an-WTG200114856.jpg');
+	 background-size: cover;
+  	height: 100%;
+  	overflow: hidden;
 }
 span {
 	font size: 10pt;
@@ -29,6 +37,12 @@ h2 {
 	font-family: 'Cinzel', serif;
 	font-weight: bold;
 	padding: 10px;
-	/*text-decoration: underline;*/
+	/*text-decoration: */
 
+}
+img {
+	height: 120px;
+	 position:fixed;
+    bottom:100px;
+    left:50%;
 }

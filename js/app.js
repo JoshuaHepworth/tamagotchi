@@ -111,68 +111,63 @@ class Pet  {
 	isDead(){
 
 	}
+	eat() {
+		// make pet less hungry
+		// printStats()
+	}
 }
-const pet = new Pet('userInput', '1-10','1-10','1-10', 0)
+const pet = new Pet('User input',0,0,0,0)
 
 
 
 //game object & FUNCTIONS
 const game = {
-	feedTime: 0,
-	playTime: 0,
-	bedTime: 0,
+	// feedTime: 0,
+	// playTime: 0,
+	interval: null, // null is initial value
+	// bedTime: 0,
 	timer: 0,
-	feedPet(){
+	controlLights() {
 		//timer starts at 0 and goes up to 10
-		const intervalFood = setInterval(() => {
-			this.feedTime++;
-			if(this.feedTime === 10){
-				//if timer gets to 0 pet is dead gameOver
-					clearInterval(intervalFood);
-					//pet is dead if timer gets to 10
-			}
-				$('#feed-timer').text('Hunger level: ' + this.feedTime);
-		}, 5000)
+		// game.startTimer();
+		// // pet.sleepiness++;
+		// if(pet.sleepiness === 10){
+		// 	//if timer gets to 0 pet is dead gameOver
+		// 		clearInterval(intervalSleep);
+		// 		//pet is dead if timer gets to 10
+		// }
 
 	},
-	playWithPet(){
-			//timer starts at 0 and goes up to 10
-			const intervalPlay = setInterval(() => {
-			this.playTime++;
-			if(this.playTime === 10){
-				//if timer gets to 0 pet is dead gameOver
-					clearInterval(intervalPlay);
-					//pet is dead if timer gets to 10
-			}
-				$('#play-timer').text('Boredom level ' + this.playTime);
-		}, 5000)
-
-	},
-	controlLights(){
-		//timer starts at 0 and goes up to 10
-			const intervalSleep = setInterval(() => {
-			this.bedTime++;
-			if(this.bedTime === 10){
-				//if timer gets to 0 pet is dead gameOver
-					clearInterval(intervalSleep);
-					//pet is dead if timer gets to 10
-			}
-				$('#lights-timer').text('Sleepiness level ' + this.bedTime);
-		}, 5000)
-
-	},
-	printStats(){
+	printStats() {
 
 	},
 	//will start his age
-	startTimer(){
-		const interval = setInterval(() => {
+	startTimer() {
+		this.interval = setInterval(() => {
+
 			this.timer++;
-			if(this.timer === 100){
-				clearInterval(interval);
+
+			if(this.timer % 2 === 0) {
+
+				pet.age++;
 			}
-				$('#timer').text('Alive for ' + this.timer + ' days');
-		}, 1000)
+			
+			pet.boredom++;
+			pet.sleepiness++;
+			pet.hunger++;
+			
+			if(this.timer === 100){
+				clearInterval(this.interval);
+			}
+
+			$('#timer').text('Alive for ' + pet.age + ' days');
+			$('#play-timer').text('Boredom level ' + pet.boredom);
+			$('#lights-timer').text('Sleepiness level ' + pet.sleepiness);
+			$('#feed-timer').text('Hunger level: ' + pet.hunger)
+
+
+
+		}, 2000)
 
 	},
 
@@ -184,11 +179,6 @@ const game = {
 
 	}
 
-
-
-
-
-
 }
 //-------------EVENTS INPUT
 
@@ -196,14 +186,18 @@ const game = {
 
 //BUTTONS EVENTS
 //button to reduce hunger count
-$('.feed').on('click', () => {
-	console.log('feed button')
-})
+// $('.feed').on('click', () => {
+// 	console.log('feed button')
+// 	game.feedPet(-1)
+	//on click, subtract timer by one
+// })
 $('.play').on('click', () => {
 	console.log('play button')
+	//on click, subtract timer by one
 })
 $('.lights').on('click', () => {
 	console.log('lights button')
+	//on click, subtract timer by one
 })
 //----------------------------------
 
@@ -233,9 +227,9 @@ $("#name-pet").on("keydown", (e) => {
      //    let $displayName = $('#display-name').text()
     	// $displayName.append($('#name-pet'));
         game.startTimer();
-        game.feedPet();
-        game.playWithPet();
-        game.controlLights();
+        // game.feedPet();
+        // game.playWithPet();
+        // game.controlLights();
         
     }
 });
@@ -243,7 +237,16 @@ $("#name-pet").on("keydown", (e) => {
 
 
 
+$('.feed').on('click', () => {
+	console.log('feed button')
+	// call pet's feed()
 
+
+	
+	// this.feedTime -=1;
+
+	//on click, subtract timer by one
+})
 
 
 
