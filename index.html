@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
@@ -9,23 +11,33 @@
 	<title></title>
 </head>
 <body>
+	<span id ="clock"> Runtime: 0 s </span>
 	<h2 id="display-name"></h2>
-	<input id="name-pet" type="text" name="pet-name" value="Enter name">
-	<span id ="timer"> Alive for: 0 years </span>
+	<input id="name-pet" type="text" name="pet-name" placeholder="Enter name">
+	
+	<div>
+		<br>
+		<span id ="timer"> Age: 0 </span>
+	</div>
+	<!-- <span id ="timer"> Age: 0 </span> -->
 	<div class="button1">
-	<button class ="feed">Feed</button>
-	<span id ="feed-timer"> Hunger level: 0 </span>
+	<button class="feed">Feed</button>
+	<span id="feed-timer"> Hunger level: 0 </span>
 	</div>
 	<div class="button2">
-	<button class ="play">Play</button>
-	<span id ="play-timer"> Boredom level: 0 </span>
+	<button class="play">Play</button>
+	<span id="play-timer"> Boredom level: 0 </span>
 	</div>
 	<div class="button3">
-	<button class ="lights">Lights</button>
-	<span id ="lights-timer"> Sleepiness level: 0 </span>
+	<button class="lights">Sleep</button>
+	<span id="lights-timer"> Sleepiness level: 0 </span>
 	</div>
-	<img src="http://rs625.pbsrc.com/albums/tt339/Tauncerador/Sprites/Kirby-1.gif~c200">
+	<img class="sprite" src="https://static.wixstatic.com/media/a39ad2_d4e65c82bb164c79a278467a30771135~mv2.gif">
+	<h1 class="game-over"></h1>
+	<h1 class="you-win"></h1>
 
-<script type="text/javascript" src="js/app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.js"></script>
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.5.2/velocity.ui.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>

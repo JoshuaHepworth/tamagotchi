@@ -5,12 +5,13 @@ input {
 	/*margin: 20px;*/
 }
 .feed, .play, .lights {
-	font-size: 15pt;
+	color: white;
+	font-size: 30pt;
 	display: block;
 	padding: 10px;
 	margin: 10px;
 	font-family: 'Indie Flower', cursive;
-	background-color: rgb(91, 194, 255);
+	background-color: black;
 	border: 1px solid black;
 	font-weight: bold;
 
@@ -21,28 +22,63 @@ input {
 	margin: 10px;
 }*/
 html {
-	background-color: lavender;
-	background-image: url('https://yese69.com/wp-content/uploads/data/2017/12/10/8-bit-wallpaper-1920x1080-for-an-WTG200114856.jpg');
+	/*background-color: lavender;*/
+	/*background-image: url('https://yese69.com/wp-content/uploads/data/2017/12/10/8-bit-wallpaper-1920x1080-for-an-WTG200114856.jpg');*/
+	background-image: url('https://i.redd.it/rtg3ld92igwz.png');
 	 background-size: cover;
-  	height: 100%;
-  	overflow: hidden;
+	/*background-repeat: no-repeat;*/
+	/*height: 300px;
+	width: 300px;*/
+/*	background-color: rgb(119, 172, 113);
+*/
+  	/*height: 100%;*/
+  	/*overflow: hidden;*/
 }
 span {
-	font size: 10pt;
+	font size: 30pt;
 	font-weight: bold;
-	background-color: rgba(255, 226, 235, 0.6);
-	border: 1px solid salmon;
+	text-shadow:
+		-1px -1px 0 #000,
+		5px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+	/*background-color: black;*/
+	/*border: 1px solid salmon;*/
+}
+#feed-timer, #play-timer, #lights-timer, #timer, #clock {
+	color: white;
+	font-size: 20pt;
 }
 h2 {
 	font-family: 'Cinzel', serif;
 	font-weight: bold;
-	padding: 10px;
+	/*padding: 5px;*/
+	font-size: 40pt;
 	/*text-decoration: */
+	color: rgb(32,194,14);
 
 }
 img {
-	height: 120px;
-	 position:fixed;
-    bottom:100px;
-    left:50%;
+	height: 200px;
+	position:fixed;
+    bottom:400px;
+    left:60%;
+}
+
+.game-over{
+	text-align: center;
+	color: red;
+	font-size: 100pt;
+	position: fixed;
+	bottom: 450px;
+	left: 50%;
+
+}
+.you-win {
+	text-align: center;
+	color: yellow;
+	font-size: 100pt;
+	position: fixed;
+	bottom: 450px;
+	left: 50%;
 }
