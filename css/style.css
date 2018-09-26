@@ -15,11 +15,6 @@ input {
 	font-weight: bold;
 
 }
-div {
-	padding: 40px;
-	display: inline;
-	margin: 10px;
-}
 body {
 	background-color: lavender;
 	background-image: url('https://images8.alphacoders.com/442/thumb-1920-442432.jpg');

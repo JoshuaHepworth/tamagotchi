@@ -190,18 +190,25 @@ const game = {
 
 
 }
-//----------some variables
-
-
-
-
-
 //-------------EVENTS INPUT
 
+
+
+//BUTTONS EVENTS
 //button to reduce hunger count
+$('.feed').on('click', () => {
+	console.log('feed button')
+})
+$('.play').on('click', () => {
+	console.log('play button')
+})
+$('.lights').on('click', () => {
+	console.log('lights button')
+})
+//----------------------------------
 
 
-
+// CLICK EVENT/KEY PRESS EVENT
 //event listener for removing input field
 $("#name-pet").on("click", () => {
     if ($('#name-pet').val() == "Enter name")
