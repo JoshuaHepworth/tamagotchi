@@ -10,8 +10,9 @@ input {
 	padding: 10px;
 	margin: 10px;
 	font-family: 'Indie Flower', cursive;
-	background-color: salmon;
+	background-color: rgb(91, 194, 255);
 	border: 1px solid black;
+	font-weight: bold;
 
 }
 div {
@@ -21,7 +22,18 @@ div {
 }
 body {
 	background-color: lavender;
+	background-image: url('https://images8.alphacoders.com/442/thumb-1920-442432.jpg');
 }
 span {
 	font size: 10pt;
+	font-weight: bold;
+	background-color: rgba(255, 226, 235, 0.6);
+	border: 1px solid salmon;
+}
+h2 {
+	font-family: 'Cinzel', serif;
+	font-weight: bold;
+	padding: 10px;
+	/*text-decoration: underline;*/
+
 }

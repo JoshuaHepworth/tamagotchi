@@ -118,32 +118,69 @@ const pet = new Pet('userInput', '1-10','1-10','1-10', 0)
 
 //game object & FUNCTIONS
 const game = {
+	feedTime: 0,
+	playTime: 0,
+	bedTime: 0,
 	timer: 0,
 	feedPet(){
+		//timer starts at 0 and goes up to 10
+		const intervalFood = setInterval(() => {
+			this.feedTime++;
+			if(this.feedTime === 10){
+				//if timer gets to 0 pet is dead gameOver
+					clearInterval(intervalFood);
+					//pet is dead if timer gets to 10
+			}
+				$('#feed-timer').text('Hunger level: ' + this.feedTime);
+		}, 5000)
 
 	},
 	playWithPet(){
+			//timer starts at 0 and goes up to 10
+			const intervalPlay = setInterval(() => {
+			this.playTime++;
+			if(this.playTime === 10){
+				//if timer gets to 0 pet is dead gameOver
+					clearInterval(intervalPlay);
+					//pet is dead if timer gets to 10
+			}
+				$('#play-timer').text('Boredom level ' + this.playTime);
+		}, 5000)
 
 	},
 	controlLights(){
+		//timer starts at 0 and goes up to 10
+			const intervalSleep = setInterval(() => {
+			this.bedTime++;
+			if(this.bedTime === 10){
+				//if timer gets to 0 pet is dead gameOver
+					clearInterval(intervalSleep);
+					//pet is dead if timer gets to 10
+			}
+				$('#lights-timer').text('Sleepiness level ' + this.bedTime);
+		}, 5000)
 
 	},
 	printStats(){
 
 	},
+	//will start his age
 	startTimer(){
 		const interval = setInterval(() => {
 			this.timer++;
 			if(this.timer === 100){
 				clearInterval(interval);
 			}
-				$('#timer').text('Timer ' + this.timer + ' days');
-		}, 10000)
+				$('#timer').text('Alive for ' + this.timer + ' days');
+		}, 1000)
 
 	},
 
 
-	message() {
+	gameOver() {
+		if(this.timer === 100){
+			//game over
+		}
 
 	}
 
@@ -161,27 +198,40 @@ const game = {
 
 //-------------EVENTS INPUT
 
+//button to reduce hunger count
+
+
+
 //event listener for removing input field
 $("#name-pet").on("click", () => {
     if ($('#name-pet').val() == "Enter name")
         $('#name-pet').val("")
-    	let $displayName = $('#display-name')
+    	// let $displayName = $('#name-pet').text
     	// $displayName.append($('#name-pet'));
     	// $('#name-pet').append($displayName)
     // remove input
     // display name there instead
     // ??? timer start?
 });
-//when user presses enter alert
+//when user presses enter alert and remove input field
 $("#name-pet").on("keydown", (e) => {
     if(e.keyCode == 13) {
+    	//#name-pet is input id
         alert($('#name-pet').val() + '? Press enter again to start');
+      	// $('#name-pet').val().appendTo($('h2'))
+      	$('#display-name').append($('#name-pet').val())
+        $('#name-pet').hide().appendTo($('#display-name'))
+        
+
+     //    let $displayName = $('#display-name').text()
+    	// $displayName.append($('#name-pet'));
         game.startTimer();
+        game.feedPet();
+        game.playWithPet();
+        game.controlLights();
         
     }
 });
-
-
 
 
 
