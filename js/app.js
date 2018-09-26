@@ -111,6 +111,7 @@ user should be able to restart game
 class Pet  {
 	constructor(name) {
 		// set the name
+		this.name = name;
 		this.hunger = 0; 
 		this.sleepiness = 0;
 		this.boredom = 0;
@@ -128,26 +129,30 @@ class Pet  {
 	}
 	eat(){
 		// make pet less hungry
-		pet.hunger -= 5;
+		this.hunger -= 5;
+		if(this.hunger < 0) {
+			// make it zero
+			this.hunger = 0;
+		}
 		game.printStats();
 	}
 	play(){
-		pet.boredom -= 5;
-		if(pet.sleepiness < 0) {
+		this.boredom -= 5;
+		if(this.boredom < 0) {
 			// make it zero
-			pet.sleepiness = 0;
+			this.boredom = 0;
 		}
 		game.printStats();
 	}
 	sleep(){
-		pet.sleepiness -= 5;
+		this.sleepiness -= 5;
 		
 		// if the number is less than zero
-		if(pet.sleepiness < 0) {
+		if(this.sleepiness < 0) {
 			// make it zero
-			pet.sleepiness = 0;
+			this.sleepiness = 0;
 		}
-		game.printStats();
+		this.printStats();
 	}
 }
 
@@ -167,10 +172,17 @@ const game = {
 	pet: null, // initial value
 	start() {
 		// get name
+		const petName = $('#name-pet').val()
+
 		// instantiate, 
 		// make this.pet be the instance
+		this.pet = new Pet(petName)
+		
 		// do the jQuery stuff you were doing in the listener(hide/show input etc)
+		$('#display-name').append( this.pet.name )
+        $('#name-pet').hide()
 		// start the timer
+		this.startTimer();
 	},
 	controlLights() {
 		//timer starts at 0 and goes up to 10
@@ -184,10 +196,10 @@ const game = {
 
 	},
 	printStats() {
-		$('#timer').text('Age ' + pet.age);
-		$('#play-timer').text('Boredom level: ' + pet.boredom);
-		$('#lights-timer').text('Sleepiness level: ' + pet.sleepiness);
-		$('#feed-timer').text('Hunger level: ' + pet.hunger)
+		$('#timer').text('Age ' + this.pet.age);
+		$('#play-timer').text('Boredom level: ' + this.boredom);
+		$('#lights-timer').text('Sleepiness level: ' + this.sleepiness);
+		$('#feed-timer').text('Hunger level: ' + this.hunger)
 		$('#clock').text('Runtime: ' + this.runTime + 's')
 
 	},
@@ -198,20 +210,20 @@ const game = {
 			this.runTime++;
 			this.timer++;
 			if(this.timer % 5 === 0) {
-				pet.age++;
+				this.pet.age++;
 			}
 			
 			if(this.timer % 3 === 0) {
-				pet.sleepiness++;
+				this.pet.sleepiness++;
 			}
 			if(this.timer % 1 === 0) {
-				pet.hunger++;
-				pet.boredom++;
+				this.hunger++;
+				this.boredom++;
 			}
 			// pet.hunger++;
 			
 			// pet.boredom++;
-			if(this.timer === 20){
+			if(this.timer === 21){
 				clearInterval(this.interval);
 				$('.sprite').velocity('callout.swing', 5000)
 				$('.sprite').velocity('callout.bounce', 5000)
@@ -221,7 +233,7 @@ const game = {
 				
 				
 			}
-			if(pet.isDead()){
+			if(this.pet.isDead()){
 				clearInterval(this.interval);
 				$('.sprite').velocity('callout.flash', 2000)
 				$('.sprite').velocity('transition.expandOut', 2000)
@@ -234,14 +246,10 @@ const game = {
 	},
 
 
-	gameOver() {
-		if(this.timer === 100){
+
 			//game over
 		}
 
-	}
-
-}
 //-------------EVENTS INPUT
 
 
@@ -286,11 +294,9 @@ $("#name-pet").on("keydown", (e) => {
     if(e.keyCode == 13) {
 
     	// this is the functionality you should move into game.start()
-      	$('#display-name').append($('#name-pet').val())
-        $('#name-pet').hide()//.appendTo($('#display-name'))
+      	//.appendTo($('#display-name'))
         
-
-        game.startTimer();
+        game.start()
 
     }
 });
