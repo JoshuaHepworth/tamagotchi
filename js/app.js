@@ -111,9 +111,16 @@ class Pet  {
 	isDead(){
 
 	}
-	eat() {
+	eat(){
 		// make pet less hungry
-		// printStats()
+		game.printStats();
+		pet.hunger -= 5
+	}
+	play(){
+		pet.boredom -= 5;
+	}
+	sleep(){
+		pet.sleepiness -= 5;
 	}
 }
 const pet = new Pet('User input',0,0,0,0)
@@ -139,35 +146,43 @@ const game = {
 
 	},
 	printStats() {
+		$('#timer').text('Alive for ' + pet.age + ' days');
+		$('#play-timer').text('Boredom level ' + pet.boredom);
+		$('#lights-timer').text('Sleepiness level ' + pet.sleepiness);
+		$('#feed-timer').text('Hunger level: ' + pet.hunger)
 
 	},
 	//will start his age
 	startTimer() {
 		this.interval = setInterval(() => {
-
+			this.printStats();
 			this.timer++;
-
-			if(this.timer % 2 === 0) {
-
+			if(this.timer % 5 === 0) {
 				pet.age++;
 			}
 			
-			pet.boredom++;
-			pet.sleepiness++;
-			pet.hunger++;
+			if(this.timer % 3 === 0) {
+				pet.sleepiness++;
+			}
+			if(this.timer % 2 === 0) {
+				pet.hunger++;
+				pet.boredom++;
+			}
+			// pet.hunger++;
 			
+			// pet.boredom++;
 			if(this.timer === 100){
 				clearInterval(this.interval);
 			}
 
-			$('#timer').text('Alive for ' + pet.age + ' days');
-			$('#play-timer').text('Boredom level ' + pet.boredom);
-			$('#lights-timer').text('Sleepiness level ' + pet.sleepiness);
-			$('#feed-timer').text('Hunger level: ' + pet.hunger)
+			// $('#timer').text('Alive for ' + pet.age + ' days');
+			// $('#play-timer').text('Boredom level ' + pet.boredom);
+			// $('#lights-timer').text('Sleepiness level ' + pet.sleepiness);
+			// $('#feed-timer').text('Hunger level: ' + pet.hunger)
 
 
 
-		}, 2000)
+		}, 1000)
 
 	},
 
@@ -186,17 +201,19 @@ const game = {
 
 //BUTTONS EVENTS
 //button to reduce hunger count
-// $('.feed').on('click', () => {
-// 	console.log('feed button')
-// 	game.feedPet(-1)
-	//on click, subtract timer by one
-// })
+$('.feed').on('click', () => {
+	console.log('feed button')
+	pet.eat();
+	
+})
 $('.play').on('click', () => {
 	console.log('play button')
+	pet.play();
 	//on click, subtract timer by one
 })
 $('.lights').on('click', () => {
 	console.log('lights button')
+	pet.sleep();
 	//on click, subtract timer by one
 })
 //----------------------------------
@@ -234,19 +251,6 @@ $("#name-pet").on("keydown", (e) => {
     }
 });
 
-
-
-
-$('.feed').on('click', () => {
-	console.log('feed button')
-	// call pet's feed()
-
-
-	
-	// this.feedTime -=1;
-
-	//on click, subtract timer by one
-})
 
 
 
