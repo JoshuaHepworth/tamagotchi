@@ -24,7 +24,7 @@ class Pet {
             this.hunger = 0;
         }
         game.printStats();
-        // $('.sprite').velocity('callout.tada', 2000)
+        $('.pancake').velocity('transition.whirlIn', 2000)
         $('img').velocity({
             perspective: [215, 50],
             translateY: 60,
@@ -33,6 +33,7 @@ class Pet {
             duration: 1000,
             loop: 1
         })
+        $('.pancake').fadeOut()
 
     }
     play() {
@@ -42,6 +43,7 @@ class Pet {
             this.boredom = 0;
         }
         game.printStats();
+        $('.kitten').velocity('transition.swoopIn')
         $('img').velocity({
             perspective: [215, 50],
             translateZ: 60,
@@ -50,6 +52,7 @@ class Pet {
             duration: 1000,
             loop: 1
         })
+        $('.kitten').fadeOut()
     }
     sleep() {
         this.sleepiness -= 5;
@@ -60,7 +63,9 @@ class Pet {
             this.sleepiness = 0;
         }
         game.printStats();
+        $('.sleep').velocity('transition.shrinkIn', 2000)
         $('.sprite').velocity('callout.swing', 2000)
+        $('.sleep').fadeOut()
     }
 }
 
@@ -124,7 +129,7 @@ const game = {
                 clearInterval(this.interval);
                 $('.sprite').velocity('callout.swing', 5000)
                 $('.sprite').velocity('callout.bounce', 5000)
-                $('img').velocity({
+                $('.sprite').velocity({
     				perspective: [215, 50],
     				translateY: 60,
     				rotateZ: 360,
@@ -134,7 +139,7 @@ const game = {
 				})
                 $('.sprite').velocity('callout.tada', 5000)
                 $('.sprite').velocity('callout.shake', 5000)
-                $('.you-win').append().text('YOU WIN!')
+                $('.you-win').append().text('WINNER!')
 
 
             }
@@ -156,8 +161,9 @@ const game = {
 }
 
 //-------------EVENTS INPUT
-
-
+$('.pancake').hide()
+$('.kitten').hide()
+$('.sleep').hide()
 
 //BUTTONS EVENTS
 //button to reduce hunger count

@@ -58,11 +58,32 @@ h2 {
 	color: rgb(32,194,14);
 
 }
-img {
+.sprite {
 	height: 200px;
 	position:fixed;
     bottom:400px;
     left:60%;
+}
+.pancake {
+	height: 80px;
+	position:fixed;
+    bottom:400px;
+    left:60%;
+
+}
+.kitten {
+	height: 90px;
+	position:fixed;
+    bottom:400px;
+    left:60%;
+
+}
+.sleep {
+	color: white;
+	height: 100px;
+	position:fixed;
+    bottom:550px;
+    left:70%;
 }
 
 .game-over{
