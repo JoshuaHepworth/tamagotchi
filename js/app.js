@@ -164,6 +164,7 @@ const game = {
 $('.pancake').hide()
 $('.kitten').hide()
 $('.sleep').hide()
+$('.sprite').hide()
 
 //BUTTONS EVENTS
 //button to reduce hunger count
@@ -190,6 +191,7 @@ $('.lights').on('click', () => {
 //when user presses enter alert and remove input field
 $("#name-pet").on("keydown", (e) => {
     if (e.keyCode == 13) {
+    	$('.sprite').velocity('transition.swoopIn', 3000)
         game.start()
     }
 });
