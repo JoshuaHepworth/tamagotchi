@@ -1,5 +1,4 @@
 # tamagotchi
-console.log('tamagotchi')
 
 
 //Create a repo for your tomagotchi pet
