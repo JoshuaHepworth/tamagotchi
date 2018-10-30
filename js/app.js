@@ -25,14 +25,14 @@ class Pet {
         }
         game.printStats();
         $('.pancake').velocity('transition.whirlIn', 2000)
-        $('img').velocity({
-            perspective: [215, 50],
-            translateY: 60,
-            rotateZ: 360,
-        }, {
-            duration: 1000,
-            loop: 1
-        })
+        // $('img').velocity({
+        //     perspective: [21, 50],
+        //     translateY: 6,
+        //     rotateZ: 360,
+        // }, {
+        //     duration: 1000,
+        //     loop: 1
+        // })
         $('.pancake').fadeOut()
 
     }
